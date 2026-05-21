@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id         Int        @id @default(autoincrement())
+  username   String
+  email      String     @unique
+  password   String?
+  createdAt  DateTime   @default(now())
+  googleId   String?    @unique
+  accessToken String? @db.Text
+  refreshToken String? @db.Text
+  categories Category[]
+  events     Event[]
+  tasks      Task[]
+}
+
+model Category {
+  id           Int    @id @default(autoincrement())
+  userId       Int
+  categoryName String
+  user         User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tasks        Task[]
+}
+
+model Task {
+  id            Int        @id @default(autoincrement())
+  userId        Int
+  externalId String? @unique
+  title         String
+  description   String
+  priority      String
+  estimatedTime Int
+  deadline      DateTime?
+  categoryId    Int
+  createdAt     DateTime   @default(now())
+  status        TaskStatus @default(TODO)
+  aiLogs        AiLog[]
+  category      Category   @relation(fields: [categoryId], references: [id])
+  user          User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Event {
+  id              Int      @id @default(autoincrement())
+  userId          Int
+  externalId      String?  @unique
+  title           String
+  description     String?
+  startTime       DateTime
+  endTime         DateTime
+  colorBackground String?
+  syncToken       String?
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model AiLog {
+  id         Int    @id @default(autoincrement())
+  taskId     Int
+  prompt     String
+  aiResponse String
+  task       Task   @relation(fields: [taskId], references: [id], onDelete: Cascade)
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  DONE
+  ARCHIVED
+}
