@@ -5,6 +5,7 @@ import cors from "cors";
 import "./services/googleStrategy.js";
 import authRoutes from "./routes/authRoutes.js";
 import * as taskService from "./services/taskService.js";
+import * as eventService from "./services/eventService.js";
 import { syncEvents, syncTasks } from "./services/calendarService.js";
 
 const app: Application = express();
@@ -59,6 +60,32 @@ app.post("/api/tasks", async (req: Request, res: Response) => {
     res.status(500).json({ error: "Creation error" });
   }
 });
+
+app.get("/api/events", async (req: Request, res: Response) => {
+  try {
+    const events = await eventService.getAllEvents(1);
+    res.json(events);
+  } catch (error) {
+    console.error("Помилка при зверненні до БД:", error);
+    res.status(500).json({ error: "Database error" });
+  }
+});
+
+// app.post("/api/events", async (req: Request, res: Response) => {
+//   try {
+//     const newEvent = await eventService.createEvent(req.body);
+//     res.status(201).json(newEvent);
+//   } catch (error) {
+//     res.status(500).json({ error: "Creation error" });
+//   }
+// });
+
+app.use(
+  cors({
+    origin: "http://localhost:5174",
+    credentials: true,
+  }),
+);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
