@@ -43,7 +43,7 @@ passport.use(
           },
         });
 
-        return done(null, user);
+        return done(null, { ...user, _googleProfile: profile });
       } catch (error) {
         console.error("Помилка при збереженні юзера:", error);
         return done(error as Error);

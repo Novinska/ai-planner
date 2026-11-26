@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 
 const LoginPage = lazy(() => import("./login/components/LoginPage"));
+const Dashboard = lazy(() => import("./planner/Dashboard"));
 
 function App() {
   const location = useLocation();
@@ -12,10 +13,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<Navigate to="/login" replace />} />
-        {/* <Route path="/main-page" element={<MainPage />} />
-        <Route path="/calendar" element={<CalendarPage />} />
-        <Route path="/task-list" element={<TasksPage />} /> */}
-        {/* <Route path="/settings" element={<Settings />} /> */}
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </div>
   );

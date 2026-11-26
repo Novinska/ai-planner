@@ -26,21 +26,21 @@ export const syncEvents = async (userId: number) => {
     auth,
   });
 
+  const startOfToday = new Date();
+  startOfToday.setUTCHours(0, 0, 0, 0);
+
   const response = await calendar.events.list({
     calendarId: "primary",
-    timeMin: new Date().toISOString(),
+    timeMin: startOfToday.toISOString(),
     singleEvents: true,
     orderBy: "startTime",
   });
 
   const events = response.data.items || [];
-
   let syncedCount = 0;
 
   for (const googleEvent of events) {
-    if (googleEvent.status === "cancelled") {
-      continue;
-    }
+    if (googleEvent.status === "cancelled") continue;
 
     if (googleEvent.htmlLink?.includes("tasks")) {
       console.log(`Відсіяли таску з календаря: ${googleEvent.summary}`);
@@ -48,18 +48,13 @@ export const syncEvents = async (userId: number) => {
     }
 
     if (googleEvent.eventType && googleEvent.eventType !== "default") {
-      if (googleEvent.eventType !== "outOfOffice") {
-        continue;
-      }
+      if (googleEvent.eventType !== "outOfOffice") continue;
     }
 
     if (!googleEvent.start || !googleEvent.end) continue;
 
     await prisma.event.upsert({
-      where: {
-        externalId: googleEvent.id as string,
-      },
-
+      where: { externalId: googleEvent.id as string },
       update: {
         title: googleEvent.summary || "Без назви",
         description: googleEvent.description || "",
@@ -70,7 +65,6 @@ export const syncEvents = async (userId: number) => {
           googleEvent.end.dateTime || googleEvent.end.date || "",
         ),
       },
-
       create: {
         userId: user.id,
         externalId: googleEvent.id as string,
@@ -112,19 +106,22 @@ export const syncTasks = async (userId: number) => {
 
   let totalSynced = 0;
 
+  let googleCategory = await prisma.category.findFirst({
+    where: { userId, categoryName: "Google Tasks" },
+  });
+
+  if (!googleCategory) {
+    googleCategory = await prisma.category.create({
+      data: { categoryName: "Google Tasks", userId },
+    });
+  }
+
   for (const list of taskLists.data.items) {
     const tasksData = await service.tasks.list({ tasklist: list.id });
     const tasks = tasksData.data.items || [];
 
     for (const googleTask of tasks) {
       if (!googleTask.title) continue;
-
-      let category = await prisma.category.findFirst({ where: { userId } });
-      if (!category) {
-        category = await prisma.category.create({
-          data: { categoryName: "Google Tasks", userId },
-        });
-      }
 
       await prisma.task.upsert({
         where: { externalId: googleTask.id as string },
@@ -137,11 +134,12 @@ export const syncTasks = async (userId: number) => {
         create: {
           externalId: googleTask.id,
           userId: user.id,
-          categoryId: category.id,
+          categoryId: googleCategory.id,
           title: googleTask.title,
           description: googleTask.notes || "",
           priority: "MEDIUM",
           estimatedTime: 30,
+          time: null,
           status: googleTask.status === "completed" ? "DONE" : "TODO",
           deadline: googleTask.due ? new Date(googleTask.due) : null,
         },

@@ -1,0 +1,162 @@
+@import "../../../styles/variables.scss";
+
+@keyframes dotBounce {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-6px);
+    color: #c0a8f7;
+  }
+}
+
+.chatwindow {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  overflow-y: hidden;
+
+  &-body {
+    flex-grow: 1;
+    overflow-y: auto;
+    background-color: #060818;
+    // padding-bottom: 180px;
+  }
+
+  &-ai-thinking {
+    display: flex;
+    width: fit-content;
+    padding: 12px 20px;
+    margin-bottom: 12px;
+    align-items: center;
+    gap: 4px;
+    font-size: 18px;
+    border-radius: 8px;
+    box-shadow:
+      0 0 10px rgba(139, 92, 246, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    .dot {
+      font-size: 20px;
+      line-height: 1;
+      font-weight: bold;
+      display: inline-block;
+      animation: dotBounce 1.4s infinite ease-in-out both;
+
+      &:nth-child(1) {
+        animation-delay: -0.32s;
+      }
+
+      &:nth-child(2) {
+        animation-delay: -0.16s;
+      }
+    }
+  }
+
+  &-form {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 900px;
+    height: 80px;
+    margin: 0 auto;
+    padding: 20px;
+    background:
+      radial-gradient(
+        circle at 0% 50%,
+        rgba(88, 28, 135, 0.32) 0%,
+        transparent 32%
+      ),
+      radial-gradient(
+        circle at 100% 50%,
+        rgba(147, 51, 234, 0.22) 0%,
+        transparent 28%
+      ),
+      radial-gradient(
+        circle at 50% 0%,
+        rgba(59, 130, 246, 0.08) 0%,
+        transparent 45%
+      ),
+      linear-gradient(180deg, #0b1020 0%, #0a0d18 100%);
+    border: 1px solid rgba(139, 92, 246, 0.18);
+    border-radius: 12px;
+    box-shadow:
+      0 0 30px rgba(139, 92, 246, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    .chatwindow-input {
+      width: 100%;
+      max-width: 90%;
+      text-align: left;
+      white-space: pre-wrap;
+      color: white;
+      word-break: normal;
+      background-color: transparent;
+      border: none;
+      resize: none;
+
+      &:focus {
+        color: white;
+        border: none;
+        outline: none;
+      }
+    }
+
+    .submit-btn {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      width: 38px;
+      height: 38px;
+      background-color: transparent;
+      border-radius: 50%;
+      border: none;
+      box-shadow:
+        0 0 10px rgba(139, 92, 246, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .icon-send {
+      font-size: 20px;
+      line-height: 20px;
+      text-align: center;
+      vertical-align: bottom;
+      color: #a795df;
+    }
+  }
+}
+
+@media (min-width: $medium-screen) {
+  .chatwindow {
+    &-ai-thinking {
+      padding: 12px 20px;
+      gap: 6px;
+      font-size: 26px;
+
+      .dot {
+        font-size: 24px;
+      }
+    }
+
+    &-form {
+      .submit-btn {
+        top: 12px;
+        right: 12px;
+        width: 42px;
+        height: 42px;
+      }
+
+      .icon-send {
+        font-size: 24px;
+        line-height: 24px;
+      }
+    }
+  }
+}

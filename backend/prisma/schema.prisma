@@ -32,10 +32,12 @@ model Task {
   id            Int        @id @default(autoincrement())
   userId        Int
   externalId String? @unique
-  title         String
-  description   String
-  priority      String
+  title         String?
+  description   String?
+  aiReason String?
+  priority      TaskPriority
   estimatedTime Int
+  time String?
   deadline      DateTime?
   categoryId    Int
   createdAt     DateTime   @default(now())
@@ -71,4 +73,10 @@ enum TaskStatus {
   IN_PROGRESS
   DONE
   ARCHIVED
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
 }

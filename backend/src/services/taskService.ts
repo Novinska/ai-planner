@@ -12,6 +12,7 @@ export const createTask = async (data: any) => {
     description,
     priority,
     deadline,
+    time,
     estimatedTime,
     userId,
     categoryId,
@@ -24,7 +25,8 @@ export const createTask = async (data: any) => {
       priority: priority || "LOW",
       status: "TODO",
       estimatedTime: Number(estimatedTime) || 0,
-      deadline: new Date(),
+      time: time || null,
+      deadline: deadline ? new Date(deadline) : new Date(),
 
       user: {
         connect: { id: Number(userId) },
