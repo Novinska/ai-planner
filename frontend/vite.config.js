@@ -8,7 +8,7 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
-        name: "PLANAI — Інтелектуальний планувальник",
+        name: "PLANAI – Інтелектуальний планувальник",
         short_name: "plannAI",
         description: "Організуй свій день за допомогою ШІ",
         display: "standalone",
@@ -28,12 +28,12 @@ export default defineConfig({
             purpose: "any maskable",
           },
         ],
-        server: {
-          proxy: {
-            "/api": "http://localhost:5000",
-          },
-        },
       },
     }),
   ],
+  server: {
+    proxy: {
+      "/api": "http://localhost:5999",
+    },
+  },
 });
