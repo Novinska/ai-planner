@@ -1,0 +1,102 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?fvh4gd');
+  src:  url('fonts/icomoon.eot?fvh4gd#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?fvh4gd') format('truetype'),
+    url('fonts/icomoon.woff?fvh4gd') format('woff'),
+    url('fonts/icomoon.svg?fvh4gd#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-google .path1:before {
+  content: "\e90f";
+  color: rgb(255, 255, 255);
+}
+.icon-google .path2:before {
+  content: "\e910";
+  margin-left: -1em;
+  color: rgb(227, 54, 41);
+}
+.icon-google .path3:before {
+  content: "\e911";
+  margin-left: -1em;
+  color: rgb(248, 189, 0);
+}
+.icon-google .path4:before {
+  content: "\e912";
+  margin-left: -1em;
+  color: rgb(88, 125, 189);
+}
+.icon-google .path5:before {
+  content: "\e913";
+  margin-left: -1em;
+  color: rgb(49, 159, 67);
+}
+.icon-sparlkles:before {
+  content: "\e914";
+}
+.icon-time:before {
+  content: "\e915";
+}
+.icon-expand:before {
+  content: "\e908";
+}
+.icon-collapse:before {
+  content: "\e909";
+}
+.icon-calendar:before {
+  content: "\e901";
+}
+.icon-analytics:before {
+  content: "\e902";
+}
+.icon-tasks:before {
+  content: "\e903";
+}
+.icon-archive:before {
+  content: "\e907";
+}
+.icon-home:before {
+  content: "\e904";
+}
+.icon-dayplan:before {
+  content: "\e905";
+}
+.icon-settings:before {
+  content: "\e906";
+}
+.icon-send:before {
+  content: "\e900";
+}
+.icon-user:before {
+  content: "\e90a";
+}
+.icon-quote:before {
+  content: "\e90b";
+}
+.icon-logout:before {
+  content: "\e90c";
+}
+.icon-open-close:before {
+  content: "\e90d";
+}
+.icon-edit:before {
+  content: "\e90e";
+}

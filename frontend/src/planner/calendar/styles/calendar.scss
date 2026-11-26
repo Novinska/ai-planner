@@ -1,0 +1,121 @@
+@import "../../../styles/variables.scss";
+
+.calendar-page {
+  .calendar-wrapper {
+    margin-top: 20px;
+  }
+}
+
+.react-calendar {
+  &__navigation {
+    display: flex;
+    padding: 6px;
+    justify-content: space-between;
+
+    .react-calendar__navigation__label {
+      width: 100%;
+      max-width: 190px;
+      font-size: 16px;
+      line-height: 20px;
+      text-transform: capitalize;
+      color: white;
+      background-color: transparent;
+      border: none;
+      pointer-events: none;
+    }
+
+    .react-calendar__navigation__arrow {
+      width: 36px;
+      font-size: 22px;
+      color: white;
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+
+      border-radius: 4px;
+    }
+  }
+
+  &__viewContainer {
+    margin-top: 12px;
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+
+    .react-calendar__month-view__weekdays__weekday {
+      padding: 8px 4px;
+      text-align: center;
+      color: #b3bbe6;
+
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+      abbr {
+        text-decoration: none !important;
+      }
+    }
+    .react-calendar__month-view__days__day {
+      padding: 12px 0 28px;
+      color: white;
+      background-color: transparent;
+      border: 0.5px solid rgba(255, 255, 255, 0.06);
+
+      &--neighboringMonth {
+        color: rgba(211, 211, 211, 0.3) !important;
+      }
+    }
+
+    .past-day {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .react-calendar__tile--active abbr {
+      padding: 9px;
+      border: 1px solid #a17efb;
+      border-radius: 50%;
+      box-shadow:
+        0 0 8px rgba(139, 92, 246, 0.6),
+        0 0 15px rgba(139, 92, 246, 0.3),
+        inset 0 0 8px rgba(139, 92, 246, 0.5);
+    }
+  }
+}
+
+@media (min-width: $medium-screen) {
+  .calendar-page {
+    .calendar-wrapper {
+      margin-top: 20px;
+    }
+  }
+
+  .react-calendar {
+    &__navigation {
+      padding: 10px;
+
+      .react-calendar__navigation__label {
+        font-size: 18px;
+      }
+
+      .react-calendar__navigation__arrow {
+        width: 42px;
+        padding: 4px 12px;
+        font-size: 22px;
+      }
+    }
+
+    &__viewContainer {
+      margin-top: 16px;
+
+      .react-calendar__month-view__weekdays__weekday {
+        padding: 10px 4px;
+        font-size: 18px;
+      }
+
+      .react-calendar__month-view__days__day {
+        font-size: 16px;
+      }
+
+      .react-calendar__tile--active abbr {
+        padding: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,293 @@
+@import "../../styles/variables.scss";
+
+.logo-wrapper {
+  display: inline-flex;
+  gap: 12px;
+  width: 100%;
+  background-size: contain;
+
+  .login-title {
+    font-size: 32px;
+    font-weight: 500;
+  }
+
+  .logo-img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .planner-slogan {
+    font-size: 18px;
+    color: #b3bbe6;
+  }
+}
+
+.login-container {
+  padding: 24px;
+
+  .img-wrapper {
+    position: relative;
+    margin-top: 16px;
+    max-width: 100%;
+    text-align: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+
+      background: radial-gradient(
+        circle,
+        rgba(147, 73, 241, 0.2) 0%,
+        rgba(147, 73, 241, 0.08) 45%,
+        transparent 75%
+      );
+
+      filter: blur(120px);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+
+      width: 45%;
+      height: 45%;
+
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      background: rgba(168, 85, 247, 0.35);
+      border-radius: 50%;
+      filter: blur(80px);
+
+      z-index: -1;
+      pointer-events: none;
+    }
+  }
+
+  .calendar-img {
+    width: 100%;
+    max-width: 80%;
+    height: auto;
+    mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+
+    -webkit-mask-image: radial-gradient(
+      ellipse at center,
+      black 60%,
+      transparent 100%
+    );
+  }
+
+  .login-btn-wrapper {
+    // max-width: 90%;
+    padding: 20px;
+    margin: {
+      top: 16px;
+      left: auto;
+      right: auto;
+    }
+    text-align: center;
+    font-size: 18px;
+    background-color: #111127;
+    border: 1px solid rgba(139, 92, 246, 0.18);
+    border-radius: 12px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+    .login-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .login-desc {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #b3bbe6;
+    }
+
+    .google-btn {
+      width: 100%;
+      max-width: 320px;
+      margin-top: 16px;
+      padding: 10px 14px;
+      font-size: 18px;
+      color: white;
+      background: linear-gradient(
+        180deg,
+        rgba(68, 39, 130, 0.95) 0%,
+        rgba(45, 24, 94, 0.95) 100%
+      );
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      vertical-align: middle;
+
+      .google-icon {
+        padding: 4px;
+        font-size: 24px;
+        background-color: white;
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+
+      .btn-title {
+        margin-left: 12px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .benefits-wrapper {
+    display: flex;
+    width: 100%;
+    margin-top: 16px;
+    gap: 12px;
+
+    .benefit {
+      width: 100%;
+      padding: 16px 12px;
+      text-align: center;
+      background-color: #111127;
+      border: 1px solid rgba(139, 92, 246, 0.18);
+      border-radius: 12px;
+
+      .icon-wrapper {
+        position: relative;
+        width: 48px;
+        height: 48px;
+        padding: 8px;
+        margin: 0 auto;
+        font-size: 28px;
+        background-color: #1f193f;
+        border-radius: 50%;
+      }
+
+      &-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 26px;
+        color: #9349f1;
+      }
+
+      .icon-time {
+        font-size: 34px;
+      }
+
+      &-title {
+        margin-top: 12px;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      &-desc {
+        margin-top: 6px;
+        color: #b3bbe6;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (min-width: $medium-screen) {
+  .logo-wrapper {
+    .login-title {
+      font-size: 36px;
+    }
+
+    .logo-img {
+      width: 64px;
+      height: 64px;
+    }
+
+    .planner-slogan {
+      font-size: 20px;
+    }
+  }
+
+  .login-container {
+    padding: 24px;
+
+    .login-card {
+      max-width: 84%;
+      display: flex;
+      margin: 0 auto;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .img-wrapper {
+      margin-top: 16px;
+      max-width: 100%;
+    }
+
+    .calendar-img {
+      max-width: 680px;
+    }
+
+    .login-btn-wrapper {
+      padding: 20px;
+      margin-top: 26px;
+
+      .login-title {
+        font-size: 22px;
+      }
+
+      .login-desc {
+        margin-top: 16px;
+        font-size: 18px;
+      }
+
+      .google-btn {
+        max-width: 380px;
+        margin-top: 20px;
+        padding: 12px 16px;
+        font-size: 22px;
+
+        .google-icon {
+          font-size: 28px;
+        }
+      }
+    }
+
+    .benefits-wrapper {
+      max-width: 84%;
+      margin: {
+        top: 22px;
+        right: auto;
+        left: auto;
+      }
+      gap: 22px;
+
+      .benefit {
+        padding: 22px 16px;
+
+        .icon-wrapper {
+          width: 60px;
+          height: 60px;
+        }
+
+        &-icon {
+          font-size: 32px;
+        }
+
+        .icon-time {
+          font-size: 40px;
+        }
+
+        &-title {
+          margin-top: 20px;
+          font-size: 22px;
+        }
+
+        &-desc {
+          margin-top: 12px;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+@import "./variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100vw;
+  height: 100vh;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #050817;
+  color: #f8f9fa;
+}
+
+.app-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.main-page {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.page-placeholder {
+  width: 100%;
+  height: 100vh;
+  padding: 70px 16px 16px 16px;
+}
+
+.main-header {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.desc {
+  margin-top: 6px;
+  font-size: 16px;
+  color: #b3bbe6;
+}
+
+.btn {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+@media (min-width: $medium-screen) {
+  .page-placeholder {
+    padding: 32px 20px;
+  }
+
+  .main-header {
+    font-size: 28px;
+  }
+
+  .desc {
+    margin-top: 8px;
+    font-size: 18px;
+  }
+}

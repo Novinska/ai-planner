@@ -1,0 +1,17 @@
+node_modules/
+dist/
+generated/prisma/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store

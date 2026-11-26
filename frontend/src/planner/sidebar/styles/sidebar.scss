@@ -1,0 +1,349 @@
+@import "../../../styles/variables.scss";
+
+.sidebar {
+  position: absolute;
+  width: 100%;
+  padding: 16px;
+  transition: all 0.3s ease-in-out;
+  background: linear-gradient(
+    to bottom,
+    rgba(5, 8, 23, 1) 0%,
+    rgba(5, 8, 23, 1) 45%,
+    rgba(5, 8, 23, 0.8) 75%,
+    rgba(5, 8, 23, 0) 100%
+  );
+
+  &-logo-wrapper {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  .logo-img {
+    position: absolute;
+    left: 0;
+    width: 42px;
+    height: auto;
+  }
+
+  .logo-text {
+    display: inline-block;
+    padding-left: 50px;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .slogan {
+    padding-left: 50px;
+    font-size: 12px;
+    color: #a895dfcc;
+  }
+
+  &-btn {
+    margin-top: 2px;
+    float: right;
+    background-color: transparent;
+    border: none;
+  }
+
+  .show-hide-icons,
+  .menu-icon {
+    padding: 4px;
+    font-size: 18px;
+    line-height: 1;
+    color: #a795df;
+    border-radius: 4px;
+    box-shadow:
+      0 0 8px rgba(132, 79, 255, 0.249),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    // vertical-align: middle;
+  }
+
+  .show-hide-icons {
+    font-size: 24px;
+  }
+}
+
+.sidebar-active {
+  // position: absolute;
+  height: 100vh;
+  background-color: #0c0d1e;
+  z-index: 2;
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    min-height: 0;
+  }
+
+  .sidebar-menu {
+    margin-top: 20px;
+  }
+
+  .menu-item-btn {
+    display: block;
+    padding: 8px;
+    margin: 0 auto;
+    width: 90%;
+    font-size: 18px;
+    text-align: left;
+    color: white;
+    background-color: transparent;
+    border: none;
+
+    & + .menu-item-btn {
+      margin-top: 12px;
+    }
+
+    &-active {
+      color: #c0a8f7;
+      background-color: #1e1b39;
+      border-left: 1px solid #6b4db1;
+      border-radius: 6px;
+    }
+  }
+
+  .menu-label {
+    margin-left: 12px;
+  }
+
+  .daily-quote {
+    margin-top: 16px;
+    padding: 16px;
+    font-size: 14px;
+    color: #a39feb;
+    background-color: #111225;
+    border: 1px solid rgba(139, 92, 246, 0.18);
+
+    border-radius: 8px;
+
+    &-text + .daily-quote-text {
+      margin-top: 8px;
+    }
+
+    .author {
+      font-style: italic;
+      color: #6a5fbf;
+    }
+  }
+
+  .sidebar-user {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-height: 0;
+  }
+
+  .user-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1;
+
+    .icon-user {
+      color: #a39feb;
+      font-size: 32px;
+    }
+
+    .user-name {
+      font-size: 18px;
+    }
+  }
+
+  .icon-logout {
+    padding: 6px;
+    font-size: 24px;
+    line-height: 1;
+    color: #a795df;
+    border-radius: 50%;
+    box-shadow:
+      0 0 8px rgba(132, 79, 255, 0.249),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+}
+
+.sidebar-hide {
+  &-content {
+    display: none;
+  }
+}
+
+@media (min-width: $medium-screen) {
+  // todo: code review
+  .sidebar {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: #0c0d1e;
+    border-right: 1px solid rgba(139, 92, 246, 0.15);
+    display: flex;
+    flex-direction: column;
+    transition:
+      width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      padding 0.3s ease;
+  }
+
+  .sidebar-pannel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+  }
+
+  .sidebar-logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .logo-text {
+    padding-left: 56px;
+    font-size: 24px;
+    transition: opacity 0.2s;
+  }
+
+  .slogan {
+    padding-left: 56px;
+    font-size: 12px;
+    transition: opacity 0.2s;
+  }
+
+  .sidebar-btn {
+    margin: 0;
+    float: none;
+    z-index: 10;
+  }
+
+  .sidebar-active {
+    width: 320px;
+    padding: 22px;
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      height: calc(100vh - 90px);
+      width: 100%;
+    }
+
+    .sidebar-menu {
+      width: 100%;
+      margin-top: 24px;
+    }
+
+    .menu-item-btn {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 12px;
+
+      .menu-icon {
+        font-size: 28px;
+      }
+
+      & + .menu-item-btn {
+        margin-top: 8px;
+      }
+    }
+
+    .menu-label {
+      display: inline-block;
+      opacity: 1;
+      margin-left: 16px;
+      transition: opacity 0.2s;
+    }
+
+    .daily-quote {
+      display: block;
+      margin-top: auto;
+    }
+
+    .sidebar-user {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 18px 0;
+    }
+  }
+
+  .sidebar-hide {
+    width: 75px;
+    padding: 22px 12px;
+
+    .sidebar-pannel {
+      justify-content: center;
+    }
+
+    .sidebar-hide-btn .icon-expand {
+      color: rgba(255, 255, 255, 0);
+    }
+
+    .sidebar-hide-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: calc(100vh - 90px);
+      width: 100%;
+    }
+
+    .sidebar-menu {
+      width: 100%;
+      margin-top: 50px;
+    }
+
+    .menu-item-btn {
+      width: 100%;
+      padding: 8px;
+      background-color: transparent;
+      border: none;
+
+      .menu-icon {
+        font-size: 28px;
+        margin: 0;
+      }
+
+      & + .menu-item-btn {
+        margin-top: 12px;
+      }
+
+      &-active {
+        color: #c0a8f7;
+        background-color: #1e1b39;
+        border-left: 1px solid #6b4db1;
+        border-radius: 6px;
+      }
+    }
+
+    .logo-text,
+    .slogan,
+    .menu-label,
+    .user-name,
+    .daily-quote,
+    .icon-logout {
+      display: none;
+    }
+
+    .sidebar-user {
+      margin-top: auto;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 18px 0;
+
+      .icon-user {
+        font-size: 32px;
+      }
+    }
+
+    .user-info {
+      justify-content: center;
+    }
+  }
+}
